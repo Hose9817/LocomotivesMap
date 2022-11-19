@@ -1,6 +1,8 @@
 import { Button, Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reactstrap";
 import { useState } from "react";
 
+import InputAutocomp from "../locomOnMap/InputAutocomp";
+
 const UpdateModal = (props) => {
 
     const [name, setName] = useState(props.card.name)
@@ -8,6 +10,19 @@ const UpdateModal = (props) => {
     const [sections, setSections] = useState(props.card.numberOfSections)
     const [location, setLocation] = useState(props.card.coordinates)
     const [isOpen, setIsOpen] = useState(false);
+
+    const updNameBtnHandler = (e) => {
+        setName(e.target.value)
+    }
+    const updSeriesBtnHandler = (e) => {
+        setSeries(e.target.value)
+    }
+    const updSectionsBtnHandler = (e) => {
+        setSections(e.target.value)
+    }
+    const setLocationHandler = (value) => {
+        setLocation(value)
+    }
 
     const saveButHandler = () => {
         // console.log(props.card.id)
@@ -20,7 +35,6 @@ const UpdateModal = (props) => {
         }
         props.updateCard(props.card.id, newCard)
         setIsOpen(false);
-
     }
 
     return (
@@ -41,29 +55,31 @@ const UpdateModal = (props) => {
                                 // placeholder="type new name"
                                 type="text"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={updNameBtnHandler}
                             />
 
                             <Label>New series:</Label>
                             <Input
                                 type="text"
                                 value={series}
-                                onChange={(e) => setSeries(e.target.value)}>
+                                onChange={updSeriesBtnHandler}>
                             </Input>
 
                             <Label>Number of sections:</Label>
                             <Input
                                 type="number"
                                 value={sections}
-                                onChange={(e) => setSections(e.target.value)}>
+                                onChange={updSectionsBtnHandler}>
                             </Input>
 
                             <Label>Location:</Label>
-                            <Input
+                            {/* <Input
                                 type="text"
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}>
-                            </Input>
+                            </Input> */}
+
+                            <InputAutocomp setLocationHandler={setLocationHandler} />
 
                         </ModalBody>
 

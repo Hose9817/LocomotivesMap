@@ -29,18 +29,13 @@ const inputStyle = {
 const InputAutocomp = (props) => {
 
     const [selected, setSelected] = useState(null);
-    //вот с этим селектом ошибка, так как когда я его пытаюсь поместить в reduser, он видит его как null !!!
-
-    if (selected !== null) console.log(selected);
 
     useEffect(() => {
-        if (selected !== null) props.newCoord(selected)
-    }, [])
+        props.setLocationHandler(selected)
+        
+    }, [selected])
 
-    console.log(props.tempCoord);
-
-
-    // if(selected !== null) props.newCoord(selected);
+    // console.log(props.tempCoord);
 
     return (
 

@@ -25,21 +25,23 @@ const initialState = {
         }
     ],
 
-    tempCoord: [{},],
+    // tempCoord: [],
 
 }
 
 const locApp = (state = initialState, action) => {
     switch (action.type) {
 
-        case 'NEW_COORD':
-            return action.payload !== null ? {
-                ...state,
-                tempCoord: [...state.tempCoord, action.payload]
-            } : state;
+        // case 'NEW_COORD':
+        //     return action.payload !== null ? {
+        //         ...state,
+        //         tempCoord: [...state.tempCoord, action.payload]
+        //     } : state;
 
         case 'ADD_CARD':
+            // console.log(action.payload)
             return {
+                
                 ...state,
                 cards: [...state.cards, {
                     id: uuidv4(),
@@ -48,6 +50,7 @@ const locApp = (state = initialState, action) => {
                     numberOfSections: action.payload.sections,
                     coordinates: action.payload.location
                 }]
+            
             }
 
         case 'UPDATE_CARD':

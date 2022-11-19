@@ -7,19 +7,31 @@ function LocomModal(props) {
     const [name, setName] = useState('');
     const [series, setSeries] = useState('')
     const [sections, setSections] = useState('')
-    const [location, setLocation] = useState('')
+    const [location, setLocation] = useState({})
     const [isOpen, setIsOpen] = useState(false)
 
 
     const createButHandler = () => {
         props.addNewCard(name, series, sections, location);
-        setName('');
-        setSeries('')
-        setSections('')
-        setLocation('')
+        // setName('');
+        // setSeries('')
+        // setSections('')
+        // setLocation({})
         setIsOpen(false)
     };
 
+    const setNameHandler = (e) => {
+        setName(e.target.value)
+    }
+    const setSeriesHandler = (e) => {
+        setSeries(e.target.value)
+    }
+    const setSectionsHandler = (e) => {
+        setSections(e.target.value)
+    }
+    const setLocationHandler = (value) => {
+        setLocation(value)
+    }
 
     return (
         <div>
@@ -38,21 +50,21 @@ function LocomModal(props) {
                                 placeholder="type new name"
                                 type="text"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={setNameHandler}
                             />
 
                             <Label>Series:</Label>
                             <Input
                                 type="text"
                                 value={series}
-                                onChange={(e) => setSeries(e.target.value)}>
+                                onChange={setSeriesHandler}>
                             </Input>
 
                             <Label>Sections:</Label>
                             <Input
                                 type="number"
                                 value={sections}
-                                onChange={(e) => setSections(e.target.value)}>
+                                onChange={setSectionsHandler}>
                             </Input>
 
                             <Label>Location:</Label>
@@ -62,7 +74,7 @@ function LocomModal(props) {
                                 onChange={(e) => setLocation(e.target.value)}>
                             </Input> */}
 
-                            <InputAutocomp />
+                            <InputAutocomp setLocationHandler={setLocationHandler} />
 
 
                         </ModalBody>

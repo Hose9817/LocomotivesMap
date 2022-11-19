@@ -11,7 +11,7 @@ const OneMarker = (props) => {
         padding: 10
     }
     const onLoad = infoWindow => {
-        console.log('infoWindow: ', infoWindow)
+        // console.log('infoWindow: ', infoWindow)
     }
 
     const [openModal, setOpenModal] = useState(false);
@@ -24,7 +24,7 @@ const OneMarker = (props) => {
         <Marker
             position={position}
             onClick={() => openMapModal()}
-            
+
 
         >
             {openModal && <InfoWindow

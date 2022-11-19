@@ -1,12 +1,9 @@
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
 import { connect } from "react-redux";
-import InputAutocomp from "./InputAutocomp";
-// import InputAutoPlace from "./InputAutoPlace";
+
 import OneMarker from "./OneMarker";
 
-// import '../../global.css'
-// import { v4 as uuidv4 } from 'uuid';
 
 const containerStyle = {
     width: '100%',
@@ -37,15 +34,12 @@ function Map({ props }) {
     // console.log(props.cards)
     return (
         <GoogleMap
-            zoom={5}
+            zoom={5.2}
             center={mapCenter}
             mapContainerStyle={containerStyle}
         >
-            <InputAutocomp newPosition={props.newPosition} />
-            {/* <InputAutoPlace/> */}
 
             {props.cards.map(el =>
-                // console.log(el.id)
                 <OneMarker key={el.id} el={el} />
             )}
         </GoogleMap>
