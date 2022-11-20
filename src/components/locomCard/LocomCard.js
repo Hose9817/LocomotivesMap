@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+import { Card, Button } from "@mui/material"
 
 import NewLocomModal from "./NewLocomModal";
 import UpdateModal from './UpdateModal'
@@ -17,7 +18,9 @@ const LocomCard = (props) => {
     }
 
     return (
-        <div>
+        <div style={{
+            'width': '300px',
+        }}>
             <NewLocomModal addNewCard={addNewCard} />
 
 
@@ -25,24 +28,43 @@ const LocomCard = (props) => {
 
             {props.cards.map(el => {
                 // console.log(el.id)
-                return <h6
-                    key={el.id}
-                    style={{
-                        'border': 'solid 2px black',
-                        'padding': '5px',
-                        'margin': '10px'
-                    }} >
+                return <>
+                    <Card key={el.id} variant="outlined">{
+                        <div
+                            key={el.id}
+                            style={{
+                                'padding': '15px',
+                                'background': '#0a1f35',
+                                'color': 'white',
+                                'lineHeight': '2px'
+                            }}
+                        >
 
-                    <b><p>{el.name}</p></b>
-                    <label>Series:</label> &nbsp; <b><span>{el.series}</span></b><br />
-                    <label>Number of sections:</label> &nbsp; <b><span>{el.numberOfSections}</span></b><br />
-                    {/* <label>Coordinates:</label> &nbsp; <b><span>{el.coordinates}</span></b><br /> */}
-                    <UpdateModal card={el} updateCard={updateCard} />
+                            <label>Name:</label> &nbsp;<b><h5 style={{ 'display': 'inline' }}>{el.name}</h5></b>
+                            <hr />
 
-                    {/* <button onClick={() => props.updateCard(el.id, updCard)} >Update</button> */}
-                    <button onClick={() => props.deleteCard(el.id)}>Delete</button>
+                            <label>Series:</label> &nbsp; <b><span>{el.series}</span></b>
+                            <hr />
 
-                </h6>;
+                            <label>Number of sections:</label> &nbsp; <b><span>{el.numberOfSections}</span></b><br />
+                            <hr />
+
+                            <label>Coordinates:</label> &nbsp; <b><span>Address (not ready)</span></b><br />
+                            <hr />
+
+                            <div style={{ 'display': 'inline' }}>
+                                <UpdateModal card={el} updateCard={updateCard} style={{ 'marginRight': '10px' }} />
+
+                                {/* <button onClick={() => props.updateCard(el.id, updCard)} >Update</button> */}
+                                <Button variant="contained" color="error" onClick={() => props.deleteCard(el.id)} >Delete</Button>
+                            </div>
+
+                        </div>
+
+                    }</Card>
+                    <br />
+                </>
+
             })}
         </div>
     )

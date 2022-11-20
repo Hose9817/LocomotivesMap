@@ -3,12 +3,17 @@ import { useMemo } from "react";
 import { connect } from "react-redux";
 
 import OneMarker from "./OneMarker";
+import {defaultTheme} from "./Theme.js";
 
 
 const containerStyle = {
     width: '100%',
-    height: '100vh'
+    height: '100vh',
 };
+
+const dafaultOptions = {
+    styles: defaultTheme
+}
 
 // const [ libraries ] = useState(['places']);
 
@@ -37,6 +42,7 @@ function Map({ props }) {
             zoom={5.2}
             center={mapCenter}
             mapContainerStyle={containerStyle}
+            options={dafaultOptions}
         >
 
             {props.cards.map(el =>

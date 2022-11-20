@@ -1,4 +1,14 @@
 .app_header {
+    padding: 20px 65px;
+    background-color: #0a1f35;
+    /* margin: 50px; */
     display: flex;
     justify-content: space-between;
+}
+
+.app_header nav {
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+
 }

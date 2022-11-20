@@ -1,6 +1,8 @@
-import { Button, Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reactstrap";
 import { useState } from "react";
 import InputAutocomp from "../locomOnMap/InputAutocomp";
+import { Button } from "@mui/material";
+import "./ModalStyles.css"
 
 function LocomModal(props) {
 
@@ -13,10 +15,10 @@ function LocomModal(props) {
 
     const createButHandler = () => {
         props.addNewCard(name, series, sections, location);
-        // setName('');
-        // setSeries('')
-        // setSections('')
-        // setLocation({})
+        setName('');
+        setSeries('')
+        setSections('')
+        setLocation({})
         setIsOpen(false)
     };
 
@@ -34,57 +36,82 @@ function LocomModal(props) {
     }
 
     return (
-        <div>
+        <div style={{ 'padding': '20px' }}>
 
-            <Button color="danger" onClick={() => setIsOpen(!isOpen)}>Create new</Button>
+            <Button
+                onClick={() => setIsOpen(!isOpen)}
+                variant="contained"
+                size="large"
+            // color="error"
+            >Create new locomotive</Button>
+
+
             {isOpen &&
                 <>
-                    <Modal isOpen={isOpen}>
-                        <ModalHeader>
+
+                    <Modal isOpen={isOpen} style={{
+                        'max-width': '400px',
+                        'min-height': '400px',
+                        'lineHeight': '10px'
+                    }}>
+                        <ModalHeader style={{
+                            'background': 'rgb(138, 134, 134)',
+                            'color': 'white'
+                        }}>
                             Add new Locomotive
                         </ModalHeader>
 
-                        <ModalBody>
-                            <Label>Name:</Label>
+                        <ModalBody style={{ 'background': 'rgb(138, 134, 134)' }}>
+                            <Label style={{ 'color': 'white' }}>Name:</Label>
                             <Input
                                 placeholder="type new name"
                                 type="text"
                                 value={name}
                                 onChange={setNameHandler}
                             />
+                            <br />
 
-                            <Label>Series:</Label>
+                            <Label style={{ 'color': 'white' }}>Series:</Label>
                             <Input
+                                placeholder="type serie"
                                 type="text"
                                 value={series}
                                 onChange={setSeriesHandler}>
                             </Input>
+                            <br />
 
-                            <Label>Sections:</Label>
+                            <Label style={{ 'color': 'white' }}>Sections:</Label>
                             <Input
+                                placeholder="type sections"
                                 type="number"
                                 value={sections}
                                 onChange={setSectionsHandler}>
                             </Input>
+                            <br />
 
-                            <Label>Location:</Label>
+                            <Label style={{ 'color': 'white' }}>Location:</Label>
                             {/* <Input
                                 type="text"
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}>
-                            </Input> */}
-
+                            </Input>  */}
                             <InputAutocomp setLocationHandler={setLocationHandler} />
-
-
                         </ModalBody>
 
-                        <ModalFooter>
-                            <Button color="primary" onClick={() => createButHandler()}>Create new Locom</Button>
-                            {' '}
-                            <Button onClick={() => setIsOpen(false)}>Cancel</Button>
-                        </ModalFooter>
+                        <ModalFooter style={{ 'background': 'rgb(138, 134, 134)' }}>
 
+                            <Button sx={{ 'marginRight': '10px' }}
+                                variant="contained"
+                                onClick={() => createButHandler()}
+                            >Create new</Button>
+
+                            <Button
+                                color="error"
+                                variant="contained"
+                                onClick={() => setIsOpen(false)}
+                            >Cancel</Button>
+
+                        </ModalFooter>
                     </Modal>
                 </>
             }

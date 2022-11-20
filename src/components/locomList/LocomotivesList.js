@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
 import LocomCard from '../locomCard/LocomCard'
-// import LocomModal from '../locomCard/NewLocomModal';
+import './LocomotivesList.css'
 
 const LocomotivesList = (props) => {
 
@@ -10,8 +10,8 @@ const LocomotivesList = (props) => {
 
 
     return (
-        <div>
-            <h2>List of Locomotives</h2>
+        <div className='locomo_list'>
+            <h1>List of Locomotives</h1>
 
             <LocomCard />
             {/* <LocomModal /> */}

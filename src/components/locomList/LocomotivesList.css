@@ -1,0 +1,11 @@
+.locomo_list { 
+    margin: 0 auto;
+    padding: 0 100px;
+    background-color: #666b70;
+}
+
+.locomo_list h1 {
+    text-align: center;
+    padding-top: 50px;
+    color: #fff;
+}

@@ -17,9 +17,15 @@ import { useState, useEffect } from "react";
 
 
 const inputStyle = {
-    width: '250px',
-    padding: '0.5rem',
-    border: 'solid 2px grey',
+    display: 'block',
+    width: '100%',
+    padding: '0.375rem 0.75rem',
+    'font-size': '1rem',
+    'font-weight': '400',
+    'line-height': '1.5',
+    color: '#212529',
+    border: '1px solid #ced4da',
+    'border-radius': '0.375rem',
     position: 'relative',
     // 'zIndex': '100',
     // margin: '55px 10px',
@@ -32,7 +38,7 @@ const InputAutocomp = (props) => {
 
     useEffect(() => {
         props.setLocationHandler(selected)
-        
+
     }, [selected])
 
     // console.log(props.tempCoord);
@@ -75,7 +81,8 @@ const PlacesAutocomplete = ({ selected, setSelected }) => {
             onChange={(e) => setValue(e.target.value)}
             disabled={!ready}
             style={inputStyle}
-            placeholder="Type adress"
+            placeholder="type adress"
+            required="true"
         />
         <ComboboxPopover style={{
             'zIndex': '1056'

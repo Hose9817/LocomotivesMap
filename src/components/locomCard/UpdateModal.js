@@ -1,4 +1,6 @@
-import { Button, Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reactstrap";
+import { Button } from "@mui/material"
+
 import { useState } from "react";
 
 import InputAutocomp from "../locomOnMap/InputAutocomp";
@@ -25,7 +27,7 @@ const UpdateModal = (props) => {
     }
 
     const saveButHandler = () => {
-        // console.log(props.card.id)
+
         const newCard = {
             id: props.card.id,
             name: name,
@@ -38,41 +40,53 @@ const UpdateModal = (props) => {
     }
 
     return (
-        <div>
+        <>
 
-            {!isOpen && <button onClick={() => setIsOpen(true)} >Update</button>}
+            {!isOpen && <Button sx={{
+                'margin-right': '10px',
+                ':hover': { 'color': 'grey' }
+            }} color="inherit" variant="outlined" onClick={() => setIsOpen(true)} >Update</Button>}
 
             {isOpen &&
                 <>
-                    <Modal isOpen={isOpen}>
-                        <ModalHeader>
-                            Change data
+                    <Modal isOpen={isOpen} style={{
+                        'max-width': '400px',
+                        'min-height': '400px',
+                        'lineHeight': '10px'
+                    }}>
+                        <ModalHeader style={{
+                            'background': 'rgb(138, 134, 134)',
+                            'color': 'white'
+                        }}>
+                            Change data of Locomotives
                         </ModalHeader>
 
-                        <ModalBody>
-                            <Label>New name:</Label>
+                        <ModalBody style={{ 'background': 'rgb(138, 134, 134)' }}>
+                            <Label style={{ 'color': 'white' }}>Name:</Label>
                             <Input
-                                // placeholder="type new name"
                                 type="text"
                                 value={name}
                                 onChange={updNameBtnHandler}
                             />
+                            <br />
 
-                            <Label>New series:</Label>
+                            <Label style={{ 'color': 'white' }}>Series:</Label>
                             <Input
                                 type="text"
                                 value={series}
                                 onChange={updSeriesBtnHandler}>
                             </Input>
+                            <br />
 
-                            <Label>Number of sections:</Label>
+                            <Label style={{ 'color': 'white' }}>Sections:</Label>
                             <Input
                                 type="number"
                                 value={sections}
                                 onChange={updSectionsBtnHandler}>
                             </Input>
+                            <br />
 
-                            <Label>Location:</Label>
+                            <Label style={{ 'color': 'white' }}>Location:</Label>
                             {/* <Input
                                 type="text"
                                 value={location}
@@ -83,16 +97,24 @@ const UpdateModal = (props) => {
 
                         </ModalBody>
 
-                        <ModalFooter>
-                            <Button color="primary" onClick={saveButHandler}>Update Locom</Button>
+                        <ModalFooter style={{ 'background': 'rgb(138, 134, 134)' }}>
+                            <Button
+                                sx={{ 'marginRight': '10px' }}
+                                variant="contained"
+                                onClick={saveButHandler}
+                            >Update</Button>
                             {' '}
-                            <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+                            <Button
+                                color="error"
+                                variant="contained"
+                                onClick={() => setIsOpen(false)}
+                            >Cancel</Button>
                         </ModalFooter>
 
                     </Modal>
                 </>
             }
-        </div>
+        </>
 
     )
 }
