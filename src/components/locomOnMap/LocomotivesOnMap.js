@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { connect } from "react-redux";
 
 import OneMarker from "./OneMarker";
-import {defaultTheme} from "./Theme.js";
+import { defaultTheme } from "./Theme.js";
 
 
 const containerStyle = {
@@ -15,7 +15,7 @@ const dafaultOptions = {
     styles: defaultTheme
 }
 
-// const [ libraries ] = useState(['places']);
+const libraries = ['places'];
 
 
 function LocomotivesOnMap(props) {
@@ -23,7 +23,7 @@ function LocomotivesOnMap(props) {
     //Временный ключ (не стал скрывать через .env):
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: "AIzaSyAEfSOdumWkvLPSGYoFgNFSSiiV4eU8WcI",
-        libraries: ["places"],
+        libraries,
     });
 
 
@@ -36,7 +36,6 @@ function LocomotivesOnMap(props) {
 
 function Map({ props }) {
     const mapCenter = useMemo(() => ({ lat: 48.5, lng: 67 }), []);
-    // console.log(props.cards)
     return (
         <GoogleMap
             zoom={5.2}

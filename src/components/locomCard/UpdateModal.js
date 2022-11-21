@@ -2,7 +2,6 @@ import { Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reacts
 import { Button } from "@mui/material"
 
 import { useState } from "react";
-
 import InputAutocomp from "../locomOnMap/InputAutocomp";
 
 const UpdateModal = (props) => {

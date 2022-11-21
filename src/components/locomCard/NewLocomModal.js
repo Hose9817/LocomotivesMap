@@ -1,8 +1,9 @@
 import { Modal, ModalHeader, Label, ModalBody, Input, ModalFooter } from "reactstrap";
-import { useState } from "react";
-import InputAutocomp from "../locomOnMap/InputAutocomp";
 import { Button } from "@mui/material";
+
 import "./ModalStyles.css"
+import InputAutocomp from "../locomOnMap/InputAutocomp";
+import { useState } from "react";
 
 function LocomModal(props) {
 
@@ -42,7 +43,6 @@ function LocomModal(props) {
                 onClick={() => setIsOpen(!isOpen)}
                 variant="contained"
                 size="large"
-            // color="error"
             >Create new locomotive</Button>
 
 

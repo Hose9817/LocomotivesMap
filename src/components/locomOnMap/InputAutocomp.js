@@ -17,19 +17,16 @@ import { useState, useEffect } from "react";
 
 
 const inputStyle = {
-    display: 'block',
-    width: '100%',
-    padding: '0.375rem 0.75rem',
+    'display': 'block',
+    'width': '100%',
+    'padding': '0.375rem 0.75rem',
     'font-size': '1rem',
     'font-weight': '400',
     'line-height': '1.5',
-    color: '#212529',
-    border: '1px solid #ced4da',
+    'color': '#212529',
+    'border': '1px solid #ced4da',
     'border-radius': '0.375rem',
-    position: 'relative',
-    // 'zIndex': '100',
-    // margin: '55px 10px',
-    // position: 'absolute',
+    'position': 'relative',
 }
 
 const InputAutocomp = (props) => {
@@ -41,7 +38,6 @@ const InputAutocomp = (props) => {
 
     }, [selected])
 
-    // console.log(props.tempCoord);
 
     return (
 
@@ -74,15 +70,20 @@ const PlacesAutocomplete = ({ selected, setSelected }) => {
         setSelected({ lat, lng });
     }
 
+    const valueFunc = (e) => {
+     setValue(e.target.value)
+        // if (e.target.value === '') return e.target.value = 'Error';
+    }
 
-    return <Combobox onSelect={handleSelect}>
+
+    return <Combobox required={true} onSelect={handleSelect}>
         <ComboboxInput
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={valueFunc}
             disabled={!ready}
             style={inputStyle}
-            placeholder="type adress"
-            required="true"
+            placeholder="type here"
+        // required={}
         />
         <ComboboxPopover style={{
             'zIndex': '1056'

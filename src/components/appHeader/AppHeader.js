@@ -1,13 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button, Divider } from "@mui/material";
 
-
 import './appHeader.css'
 
 const AppHeader = () => {
     return (
         <>
-
             <header className="app_header">
 
                 <Link to="/">

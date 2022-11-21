@@ -6,12 +6,9 @@ import UpdateModal from './UpdateModal'
 
 const LocomCard = (props) => {
 
-
-
     const addNewCard = (newName, newSeries, newSections, newLocation) => {
         props.addCard(newName, newSeries, newSections, newLocation);
     };
-
 
     const updateCard = (id, newCard) => {
         props.updateCard(id, newCard);
@@ -27,8 +24,7 @@ const LocomCard = (props) => {
             <br />
 
             {props.cards.map(el => {
-                // console.log(el.id)
-                return <>
+                return <div key={el.id}>
                     <Card key={el.id} variant="outlined">{
                         <div
                             key={el.id}
@@ -55,7 +51,6 @@ const LocomCard = (props) => {
                             <div style={{ 'display': 'inline' }}>
                                 <UpdateModal card={el} updateCard={updateCard} style={{ 'marginRight': '10px' }} />
 
-                                {/* <button onClick={() => props.updateCard(el.id, updCard)} >Update</button> */}
                                 <Button variant="contained" color="error" onClick={() => props.deleteCard(el.id)} >Delete</Button>
                             </div>
 
@@ -63,7 +58,7 @@ const LocomCard = (props) => {
 
                     }</Card>
                     <br />
-                </>
+                </div>
 
             })}
         </div>
